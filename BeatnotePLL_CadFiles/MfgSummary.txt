@@ -5,5 +5,20 @@ Surface mount placements: 111 (two sides)
 Through-hole placements: 11
 
 Board dimensions: 5" x 2.25"
-Four layers
+Four layers; FR4 1-oz copper
 Silkscreen top and bottom
+
+Layer description (in Beatnote_PLL-gerbers/*)
+
+* Beatnote_PLL.cmp - top copper
+* Beatnote_PLL.ly2 - layer 2 copper
+* Beatnote_PLL.ly15 - layer 3 copper
+* Beatnote_PLL.sol - bottom copper
+* Beatnote_PLL.plc - top silkscreen
+* Beatnote_PLL.pls - bottom silkscreen
+* Beatnote_PLL.stc - top solder stop mask
+* Beatnote_PLL.sts - bottom solder stop mask
+* Beatnote_PLL.drd - Excellon drill file
+
+* Beatnote_PLL.crc - top solderpaste mask
+* Beatnote_PLL.crs - bottom solderpaste mask
