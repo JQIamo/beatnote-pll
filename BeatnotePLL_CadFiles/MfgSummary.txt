@@ -1,0 +1,9 @@
+Summary
+
+BOM items: 47
+Surface mount placements: 111 (two sides)
+Through-hole placements: 11
+
+Board dimensions: 5" x 2.25"
+Four layers
+Silkscreen top and bottom
