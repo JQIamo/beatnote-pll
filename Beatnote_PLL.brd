@@ -4392,7 +4392,7 @@ This Sunstone Circuits 4 Layer .DRU has been set to cover our minimum requiremen
 <element name="IC11" library="misc-ics" package="SOT-89" value="L7905" x="62.23" y="54.61" smashed="yes">
 <attribute name="NAME" x="59.563" y="53.594" size="0.889" layer="25" rot="R90"/>
 <attribute name="VALUE" x="59.8249" y="50.2651" size="1.27" layer="27"/>
-<attribute name="PARTNO" value="LM79L05ACZFS-ND" x="62.23" y="54.61" size="1.778" layer="27" display="off"/>
+<attribute name="PARTNO" value="MC79L05ACHXCT-ND" x="62.23" y="54.61" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C44" library="rcl" package="C0402K" value="100nF" x="65.278" y="52.07" smashed="yes" rot="R270">
 <attribute name="NAME" x="65.957" y="52.062" size="0.889" layer="25" rot="R270"/>
