@@ -45,9 +45,9 @@ int const EncoderStream::ENC_A = 7;
 int const EncoderStream::ENC_B = 6;
 int const EncoderStream::ENC_SW = 5;
 //EncoderStream only supports one encoder.
-//int const EncoderStream::ENC2_A = 4;
-//int const EncoderStream::ENC2_B = 3;
-//int const EncoderStream::ENC2_SW = 2;
+//int const EncoderStream::ENC_A = 4;
+//int const EncoderStream::ENC_B = 3;
+//int const EncoderStream::ENC_SW = 2;
 
 Thread saveThread = Thread();
 
@@ -76,7 +76,7 @@ void setup(){
   saveThread.onRun(saveToEEPROM);
   saveThread.setInterval(60000);  // save checkpoint every minute
 
-Serial.begin(9600);
+  Serial.begin(9600);
 
 #ifdef DEBUG
   while (!Serial){ ; }
@@ -89,6 +89,8 @@ Serial.begin(9600);
   // initialize DDS
   dds.begin(40000000, 25);
   dds.setFreq(ddsFreq);
+  // initialize PLL
+  pll.initialize(pVal, bVal, aVal, rVal, polVal, 0);
   // initialize encoder stream
   Encoder.begin();
   // initialize LCD
@@ -96,6 +98,7 @@ Serial.begin(9600);
   lcd.cursor();
   // set up the PLL programming menu
   root.add(&prog_pll);
+  root.add(&lock_menu);
   // set up prescaler menu
   p_menu.add(&p_8);
   p_menu.add(&p_16);

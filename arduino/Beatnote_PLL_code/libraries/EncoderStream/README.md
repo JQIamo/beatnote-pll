@@ -1,5 +1,7 @@
 # EncoderStream
 
+EncoderStream-arduino is released under the GNU GPL3.0 and was written by N. Pisenti. The current maintainer is D. Barker.
+
 Stream-like object for interacting with rotary encoder + push button.
 
 This library implements an object (`Encoder`) which emits characters depending on user interaction.

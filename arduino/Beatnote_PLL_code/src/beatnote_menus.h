@@ -113,9 +113,18 @@ void code_version(int & v){
 
 }
 
+/******** PLL Update Menu ************/
+
 void update_pll(int & v){
   // push P, B, A, R, pol to the PLL
-  pll.update(pVal, bVal, aVal, rVal, polVal);
+  pll.initialize(pVal, bVal, aVal, rVal, polVal);
+}
+
+/******** Lock Freq Menu ************/
+
+void enter_lock(double & freq){
+  // freq in MHz, dds operates in Hz
+  freq = (pVal*bVal + aVal)*(ddsFreq/rVal)/1.0e6;
 }
 /******** Menu Def ************/
 
@@ -167,14 +176,20 @@ MenuNumeric<double> dds_menu = MenuNumeric<double>::create("DDS freq.       ", &
     .update_cb(update_dds)
     .enter_cb(enter_dds);
 
+MenuNumeric<double> lock_menu = MenuNumeric<double>::create("Lock freq.       ", &lcd)
+    .line0("lock:           ")
+    .line1("             MHz")
+    .formatter("%08.3f", 0, 1)
+    .enter_cb(enter_lock);
+
 // Menu items to allow selection of P
 MenuSelection p_8("08              ", &lcd, update_p, 0);
 MenuSelection p_16("16              ", &lcd, update_p, 1);
 MenuSelection p_32("32              ", &lcd, update_p, 2);
 MenuSelection p_64("64              ", &lcd, update_p, 3);
 // Menu items to allow selection of pol
-MenuSelection pol_minus("-               ", &lcd, update_pol, 0);
-MenuSelection pol_plus("+               ", &lcd, update_pol, 1);
+MenuSelection pol_minus("Negative        ", &lcd, update_pol, 0);
+MenuSelection pol_plus("Positive        ", &lcd, update_pol, 1);
 // Menu item to program the PLL
 MenuSelection prog_pll("Program PLL     ", &lcd, update_pll, 0);
 // selection to reset the DDS
