@@ -117,7 +117,7 @@ void code_version(int & v){
 
 void update_pll(int & v){
   // push P, B, A, R, pol to the PLL
-  pll.initialize(pVal, bVal, aVal, rVal, polVal);
+  pll.initialize(pVal, bVal, aVal, rVal, polVal, 0);
 }
 
 /******** Lock Freq Menu ************/
