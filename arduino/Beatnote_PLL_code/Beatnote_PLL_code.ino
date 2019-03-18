@@ -28,12 +28,12 @@
 // Hard code release version (make sure to update for new releases!)
 const char * gitversion = "v2.0.0";
 
-uint16_t pVal = 8;
+uint16_t pVal = 16;
 uint16_t bVal = 3;
 uint16_t aVal = 0;
 uint16_t rVal = 1;
 uint16_t polVal = 1;
-uint32_t ddsFreq = 80000000;  // = 80MHz
+uint32_t ddsFreq = 25000000;  // = 25MHz
 
 LCD_ST7032 lcd(LCD_RST, LCD_RS, LCD_CS);
 AD9910 dds(DDS_CS, DDS_RESET, DDS_IOUPDATE, DDS_PS0);
@@ -100,18 +100,60 @@ void setup(){
   root.add(&prog_pll);
   root.add(&lock_menu);
   // set up prescaler menu
-  p_menu.add(&p_8);
-  p_menu.add(&p_16);
-  p_menu.add(&p_32);
-  p_menu.add(&p_64);
+  // switch to ensure correct initial menu
+  switch (pVal){
+    case 8:
+      p_menu.add(&p_8);
+      p_menu.add(&p_16);
+      p_menu.add(&p_32);
+      p_menu.add(&p_64);
+      break;
+    case 16:
+      p_menu.add(&p_16);
+      p_menu.add(&p_32);
+      p_menu.add(&p_64);
+      p_menu.add(&p_8);
+      break;
+    case 32:
+      p_menu.add(&p_32);
+      p_menu.add(&p_64);
+      p_menu.add(&p_8);
+      p_menu.add(&p_16);
+      break;
+    case 64:
+      p_menu.add(&p_64);
+      p_menu.add(&p_8);
+      p_menu.add(&p_16);
+      p_menu.add(&p_32);
+      break;
+    default:
+      p_menu.add(&p_8);
+      p_menu.add(&p_16);
+      p_menu.add(&p_32);
+      p_menu.add(&p_64);
+      break;
+  }
   root.add(&p_menu);
   // set up b, a, r counter menus
   root.add(&b_menu);
   root.add(&a_menu);
   root.add(&r_menu);
   // set up polarity menu
-  pol_menu.add(&pol_minus);
-  pol_menu.add(&pol_plus);
+  // switch to ensure correct initial menu
+  switch (polVal){
+    case 0:
+      pol_menu.add(&pol_minus);
+      pol_menu.add(&pol_plus);
+      break;
+    case 1:
+      pol_menu.add(&pol_plus);
+      pol_menu.add(&pol_minus);
+      break;
+    default:
+      pol_menu.add(&pol_plus);
+      pol_menu.add(&pol_minus);
+      break;
+  }
   root.add(&pol_menu);
   // set up dds menu
   // TODO: check if DDS installed by reading back from register

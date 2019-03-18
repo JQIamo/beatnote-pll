@@ -124,7 +124,7 @@ void update_pll(int & v){
 
 void enter_lock(double & freq){
   // freq in MHz, dds operates in Hz
-  freq = (pVal*bVal + aVal)*(ddsFreq/rVal)/1.0e6;
+  freq = ((double)pVal*bVal + aVal)*((double)ddsFreq/rVal)/1.0e6;
 }
 /******** Menu Def ************/
 
