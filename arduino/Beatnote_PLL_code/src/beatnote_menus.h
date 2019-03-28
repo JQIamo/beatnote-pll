@@ -50,7 +50,7 @@ void enter_b(uint16_t & num){
 
 void update_b(uint16_t & num){
   // constrain B in allowed range
-  num = constrain(num, 3, 8191);
+  num = (uint16_t) constrain(num, 3, 8191);
   // update B
   bVal = num;
 }
@@ -64,7 +64,7 @@ void enter_a(uint16_t & num){
 
 void update_a(uint16_t & num){
   // constrain A in allowed range
-  num = constrain(num, 0, 63);
+  num = (uint16_t) constrain(num, 0, 63);
   // update A
   aVal = num;
 }
@@ -78,7 +78,7 @@ void enter_r(uint16_t & num){
 
 void update_r(uint16_t & num){
   // constrain A in allowed range
-  num = constrain(num, 1, 16383);
+  num = (uint16_t) constrain(num, 1, 16383);
   // update A
   rVal = num;
 }
